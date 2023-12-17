@@ -72,3 +72,13 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+:root {
+  --button-primary: #306fcc;
+  --button-secondary: #4a66ad;
+  --bg-primary: #4b6fec;
+  --input-color: #e7e7e7;
+  --form-color: #ffffff;
+  --form-gap-primary: 0.75rem;
+  --form-gap-secondary: 1.5rem;
+}

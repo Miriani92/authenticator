@@ -8,7 +8,7 @@ export const AuthRouter = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Signup />} />
+      <Route path="/signup" element={<Signup />} />
       <Route
         path="/dashboard"
         element={<PrivateRoute component={<Dashboard />} />}
