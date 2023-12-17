@@ -1,12 +1,8 @@
 import "./App.css";
+import { AuthRouter } from "./router/authRouter";
 
 function App() {
-  console.log("here");
-  return (
-    <div className="App">
-      <h1>hello world</h1>
-    </div>
-  );
+  return <AuthRouter />;
 }
 
 export default App;
