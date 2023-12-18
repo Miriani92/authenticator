@@ -76,6 +76,7 @@ select {
 :root {
   --button-primary: #306fcc;
   --button-secondary: #4a66ad;
+  --button-disabled: #828a86;
   --bg-primary: #4b6fec;
   --input-color: #e7e7e7;
   --form-color: #ffffff;

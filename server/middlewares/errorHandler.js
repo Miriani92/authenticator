@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-export const handleError = async (err, req, res) => {
+export const handleError = (err, req, res, next) => {
   const errorInstance = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     message: err.message || "Something went wrong try again later",

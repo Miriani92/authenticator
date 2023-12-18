@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./FormInput.module.css";
 
 export const FormInput = ({
+  type,
   value,
   borderColor,
   onChange,
@@ -17,6 +18,8 @@ export const FormInput = ({
         name={name}
         onChange={onChange}
         placeholder={placeHolder}
+        required
+        type={type}
       />
       {Icon && <Icon size={25} color="#8D8A89" />}
     </div>

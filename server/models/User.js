@@ -12,10 +12,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: [true, "Please provide email"],
-    validate: {
-      validator: validator.isEmail,
-      message: "Please provide valid email",
-    },
   },
   password: {
     type: String,
@@ -41,4 +37,4 @@ UserSchema.methods.comparePassword = async function (clientProvidedPassword) {
   return isMatch;
 };
 
-module.exports = mongoose.model("User", UserSchema);
+export default mongoose.model("User", UserSchema);

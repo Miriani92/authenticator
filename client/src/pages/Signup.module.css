@@ -33,3 +33,8 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.error {
+  color: red;
+  text-align: center;
+}

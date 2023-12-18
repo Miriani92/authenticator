@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import "express-async-errors";
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -15,7 +16,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use("/api/v1/auth", authRouter);
 
-app.use((req, res) => res.status(404).send("Route does not exist"));
+// app.use((req, res) => res.status(404).send("Route does not exist"));
 
 app.use(handleError);
 

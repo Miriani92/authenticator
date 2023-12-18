@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./FormButton.module.css";
 
 export const FormButton = ({
+  isLoading,
   backgroundColor,
+  isActive,
   color,
   Icon,
   onClick,
@@ -10,11 +12,17 @@ export const FormButton = ({
   borderColor,
   iconColor,
 }) => {
-  const customStyle = { backgroundColor, border: `2px solid ${borderColor}` };
+  const customStyle = {
+    backgroundColor: isActive ? backgroundColor : "var(--button-disabled)",
+    border: `2px solid ${borderColor}`,
+  };
+
+  const buttonContent = isLoading ? "loading..." : text;
+
   return (
     <div className={styles.wrapper} style={customStyle}>
       <button onClick={onClick} style={{ color }} className={styles.button}>
-        {text}
+        {buttonContent}
       </button>
       {Icon && (
         <div className={styles.icon_wrapper}>
