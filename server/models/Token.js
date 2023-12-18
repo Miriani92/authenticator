@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const TokenSchema = new mongoose.Schema(
   {
     refreshToken: { type: String, required: true },
-    isValid: { type: Boolean, default: true },
     user: {
       type: mongoose.Types.ObjectId,
       ref: "User",
@@ -13,4 +12,4 @@ const TokenSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Token", TokenSchema);
+export default mongoose.model("Token", TokenSchema);

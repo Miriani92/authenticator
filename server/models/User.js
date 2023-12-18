@@ -5,8 +5,6 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please provide name"],
-    minlength: 3,
-    maxlength: 50,
   },
   email: {
     type: String,
@@ -16,14 +14,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please provide password"],
-    minlength: 6,
   },
-  verificationToken: String,
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
-  verified: Date,
 });
 
 UserSchema.pre("save", async function () {
