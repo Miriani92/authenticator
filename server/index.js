@@ -22,7 +22,7 @@ app.use(express.json());
 app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://authenticator-u8fy-hp8pf3a8k-miriani92.vercel.app/"
+    "https://authenticator-u8fy.vercel.app/"
   );
   res.header("Access-Control-Allow-Credentials", "true");
 
