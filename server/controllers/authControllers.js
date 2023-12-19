@@ -52,6 +52,7 @@ export const signup = async (req, res) => {
 };
 export const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log("email:", email, "password:", password);
 
   if (!email || !password) {
     throw new BadRequestError("Please provide email and password");
@@ -100,4 +101,11 @@ export const logout = async (req, res) => {
   });
   res.status(StatusCodes.OK).json({ msg: "user logged out!" });
 };
-export const verifyAccountByEmail = async (req, res) => {};
+
+export const getCurrentUser = async (req, res) => {
+  const { user } = req;
+  if (user && Object.keys(user).length === 0) {
+    return res.status(StatusCodes.OK).json({ user: null });
+  }
+  res.status(StatusCodes.OK).json({ user });
+};

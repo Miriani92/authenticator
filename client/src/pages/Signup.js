@@ -39,10 +39,7 @@ export const Signup = () => {
         `http://localhost:4000/api/v1/auth/signup`,
         formData
       );
-      console.log("user:", data.user);
-
       setFormData({ name: "", email: "", password: "" });
-
       if (data?.user) {
         setUser(data.user);
       }
