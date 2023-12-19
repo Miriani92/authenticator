@@ -4,3 +4,6 @@ export { Login } from "./Login";
 export { VerifyEmail } from "./VerifyEmail";
 export { Signup } from "./Signup";
 export { Error } from "./Error";
+export { EditBook } from "./EditBook";
+export { AddBook } from "./AddBook";
+export { DeleteBook } from "./DeleteBook";
