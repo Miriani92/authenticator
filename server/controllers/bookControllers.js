@@ -7,7 +7,7 @@ export const getBookList = async (req, res) => {
     const bookList = await Book.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
-    res.status(StatusCodes.OK).json({ bookList });
+    res.status(StatusCodes.OK).json({ books: bookList });
   } catch (error) {
     res.status(500).json({ message: error });
   }
@@ -30,8 +30,9 @@ export const getBook = async (req, res) => {
 
 export const editBook = async (req, res) => {
   try {
-    const { _id: userID } = req.body;
-    const editedBook = await Book.findOneAndUpdate({ _id: userID }, req.body);
+    console.log("params", req.params);
+    const { id } = req.params;
+    const editedBook = await Book.findOneAndUpdate({ _id: id }, req.body);
 
     if (!editedBook) {
       return res
@@ -47,16 +48,15 @@ export const editBook = async (req, res) => {
 
 export const deleteBook = async (req, res) => {
   try {
-    const { id: userID } = req.params;
-    const book = await Book.findOneAndDelete({ _id: userID });
+    const { id } = req.params;
+    const book = await Book.findOneAndDelete({ _id: id });
     if (!book) {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "no book with this id" });
     }
 
-    const updatedUsers = await userModel.find();
-    res.status(StatusCodes.OK).json({ updatedUsers });
+    res.status(StatusCodes.OK).json({ message: "deleted" });
   } catch (error) {
     res.status(500).json({ message: error });
   }
@@ -72,7 +72,7 @@ export const addBook = async (req, res) => {
   }
   try {
     const addedBook = await Book.create(book);
-    res.status(StatusCodes.CREATED).json({ addedUser });
+    res.status(StatusCodes.CREATED).json({ addedBook });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

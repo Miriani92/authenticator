@@ -25,7 +25,7 @@ app.use(cookieParser(process.env.JWT_SECRET));
 
 // app.use(express.static(path.join(__dirname, "build")));
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/book", bookRouter);
+app.use("/api/v1/books", bookRouter);
 
 // app.use((req, res) => res.status(404).send("Route does not exist"));
 

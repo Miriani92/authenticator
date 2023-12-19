@@ -57,6 +57,8 @@ export const Signup = () => {
     const isValid = handleSignupValidation({ ...formData });
     if (isValid) {
       setSubmitButton((s) => ({ ...s, active: true }));
+    } else {
+      setSubmitButton((s) => ({ ...s, active: false }));
     }
     return () => setSubmitButton({ active: false, isLoading: false });
   }, [formData]);
@@ -103,7 +105,7 @@ export const Signup = () => {
           <FormButton
             isLoading={submitButton.isLoading}
             isActive={submitButton.active}
-            onClick={handleSubmit}
+            onClick={submitButton.active ? handleSubmit : () => null}
             text="Signup"
             color="#D3EEFA"
             backgroundColor="var(--button-primary)"

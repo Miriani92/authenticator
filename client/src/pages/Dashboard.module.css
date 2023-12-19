@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  width: 90%;
+  height: 90%;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.header button {
+}
+
+.icon_wrapper {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

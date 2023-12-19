@@ -13,8 +13,12 @@ import { useAuthContext } from "../store/authContext";
 
 export const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
+
   const { user, setUser } = useAuthContext();
-  const [isSubmitButton, setIsSubmitButton] = useState(false);
+  const [submitButton, setSubmitButton] = useState({
+    active: false,
+    isLoading: false,
+  });
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -30,6 +34,8 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setSubmitButton((s) => ({ ...s, isLoading: true }));
+
     try {
       const { data } = await axios.post(
         `http://localhost:4000/api/v1/auth/login`,
@@ -44,14 +50,19 @@ export const Login = () => {
       const message = error.response?.data?.message;
       setErrorMessage(message);
     }
+
+    setSubmitButton((s) => ({ ...s, isLoading: false }));
   };
 
   useEffect(() => {
     const isValid = handleLoginValidation({ ...formData });
     if (isValid) {
-      setIsSubmitButton(true);
+      setSubmitButton((s) => ({ ...s, active: true }));
+    } else {
+      setSubmitButton((s) => ({ ...s, active: false }));
     }
-    return () => setIsSubmitButton(false);
+
+    return () => setSubmitButton({ active: false, isLoading: false });
   }, [formData]);
 
   return (
@@ -86,8 +97,8 @@ export const Login = () => {
           />
           {errorMessage && <p className={styles.error}>{errorMessage}</p>}
           <FormButton
-            isActive={isSubmitButton}
-            onClick={handleSubmit}
+            isActive={submitButton.active}
+            onClick={submitButton.active ? handleSubmit : () => null}
             text="Login"
             color="#D3EEFA"
             backgroundColor="var(--button-primary)"
