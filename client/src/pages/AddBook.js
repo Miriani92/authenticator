@@ -6,6 +6,7 @@ import { FormButton } from "../components";
 import axios from "axios";
 import { handleBookValidation } from "../utils/handleValidation";
 import { useBookContext } from "../store/bookContext";
+import { BASE_URL } from "../constants";
 
 export const AddBook = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ export const AddBook = () => {
 
     try {
       const { data } = await axios.post(
-        `http://localhost:4000/api/v1/books/add`,
+        `${BASE_URL}api/v1/books/add`,
         formData
       );
       await getBooks();

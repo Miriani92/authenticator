@@ -8,6 +8,7 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import { FormInput, FormButton, Container } from "../components";
 import { handleSignupValidation } from "../utils/handleValidation";
 import { useAuthContext } from "../store/authContext";
+import { BASE_URL } from "../constants";
 
 export const Signup = () => {
   const { setUser, user } = useAuthContext();
@@ -36,7 +37,7 @@ export const Signup = () => {
 
     try {
       const { data } = await axios.post(
-        `http://localhost:4000/api/v1/auth/signup`,
+        `${BASE_URL}api/v1/auth/signup`,
         formData
       );
       setFormData({ name: "", email: "", password: "" });

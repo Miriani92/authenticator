@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { BASE_URL } from "../constants";
 
 const AuthContext = createContext();
 
@@ -10,9 +11,7 @@ export const AuthContextProvider = ({ children }) => {
   const deleteUser = () => setUser(null);
 
   const getCurrentUser = async () => {
-    const { data } = await axios.get(
-      `http://localhost:4000/api/v1/auth/get-user`
-    );
+    const { data } = await axios.get(`${BASE_URL}api/v1/auth/get-user`);
     console.log(data?.user);
 
     if (data?.user) {

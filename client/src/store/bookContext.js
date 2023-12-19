@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../constants";
 
 const BookContext = createContext();
 
@@ -10,7 +11,7 @@ export const BookContextProvider = ({ children }) => {
 
   const getBooks = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:4000/api/v1/books`);
+      const { data } = await axios.get(`${BASE_URL}api/v1/books`);
       if (data?.books) {
         setBooks(data.books);
       }

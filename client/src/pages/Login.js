@@ -10,6 +10,7 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import { Container } from "../components";
 import { handleLoginValidation } from "../utils/handleValidation";
 import { useAuthContext } from "../store/authContext";
+import { BASE_URL } from "../constants";
 
 export const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -38,7 +39,7 @@ export const Login = () => {
 
     try {
       const { data } = await axios.post(
-        `http://localhost:4000/api/v1/auth/login`,
+        `${BASE_URL}api/v1/auth/login`,
         formData
       );
       if (data?.user) {

@@ -6,6 +6,8 @@ import { useBookContext } from "../store/bookContext";
 import { useNavigate } from "react-router-dom";
 import { CiLogout } from "react-icons/ci";
 import { useAuthContext } from "../store/authContext";
+import { BASE_URL } from "../constants";
+
 import axios from "axios";
 
 export const Dashboard = () => {
@@ -28,9 +30,7 @@ export const Dashboard = () => {
   };
   const handleLogOut = async () => {
     console.log(id);
-    const { data } = await axios.delete(
-      `http://localhost:4000/api/v1/auth/logout/${id}`
-    );
+    const { data } = await axios.delete(`${BASE_URL}api/v1/auth/logout/${id}`);
     console.log("logged_out:", data?.user, data?.message);
     if (data?.user === null) {
       setUser(data.user);

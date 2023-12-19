@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { handleBookValidation } from "../utils/handleValidation";
 import { FormInput } from "../components";
 import { FormButton } from "../components";
+import { BASE_URL } from "../constants";
 import axios from "axios";
 
 export const EditBook = () => {
@@ -35,7 +36,7 @@ export const EditBook = () => {
 
     try {
       const { data } = await axios.patch(
-        `http://localhost:4000/api/v1/books/edit/${editBookData._id}`,
+        `${BASE_URL}api/v1/books/edit/${editBookData._id}`,
         formData
       );
       await getBooks();

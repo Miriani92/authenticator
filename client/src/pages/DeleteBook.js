@@ -4,6 +4,7 @@ import { Container } from "../components";
 import { useNavigate } from "react-router-dom";
 import { useBookContext } from "../store/bookContext";
 import { FormButton } from "../components";
+import { BASE_URL } from "../constants";
 import axios from "axios";
 
 export const DeleteBook = () => {
@@ -15,7 +16,7 @@ export const DeleteBook = () => {
     try {
       setIsLoading(true);
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/books/delete/${deleteBookData._id}`
+        `${BASE_URL}api/v1/books/delete/${deleteBookData._id}`
       );
       await getBooks();
       setIsLoading(false);
