@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser(process.env.JWT_SECRET));
 
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/books", bookRouter);
 
@@ -45,3 +45,4 @@ const handleConnection = async () => {
 app.listen(port, () => console.log(`server running on  port ${port}`));
 
 handleConnection();
+export default app;
