@@ -8,7 +8,7 @@ export const Home = () => {
   const { user } = useAuthContext();
   return (
     <section className={styles.wrapper}>
-      {true && <Navigate to="/dashboard" />}
+      {user && <Navigate to="/dashboard" />}
       <Login />
     </section>
   );
