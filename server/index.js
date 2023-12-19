@@ -19,13 +19,16 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
-// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cors());
 app.use(cookieParser(process.env.JWT_SECRET));
 
-// app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build")));
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/books", bookRouter);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 // app.use((req, res) => res.status(404).send("Route does not exist"));
 

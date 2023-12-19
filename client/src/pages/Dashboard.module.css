@@ -25,3 +25,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.logout {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+  background-color: white;
+  background-color: rgb(163, 151, 151);
+}

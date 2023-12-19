@@ -7,16 +7,17 @@ import { EditBook, AddBook, DeleteBook } from "../pages";
 export const AuthRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<Signup />} />
+      <Route path="/" element={<Home />} exact />
+      <Route path="/login" element={<Login />} exact />
+      <Route path="/signup" element={<Signup />} />
       <Route
-        path="dashboard"
+        path="/dashboard"
         element={
           <PrivateRoute>
             <Dashboard />
           </PrivateRoute>
         }
+        exact
       />
       <Route
         path="add-book"

@@ -89,8 +89,6 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  await Token.findOneAndDelete({ user: req.user.userId });
-
   res.cookie("accessToken", "logout", {
     httpOnly: true,
     expires: new Date(Date.now()),
@@ -99,7 +97,7 @@ export const logout = async (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now()),
   });
-  res.status(StatusCodes.OK).json({ msg: "user logged out!" });
+  res.status(StatusCodes.OK).json({ message: "user logged out!", user: null });
 };
 
 export const getCurrentUser = async (req, res) => {

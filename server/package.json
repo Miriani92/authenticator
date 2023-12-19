@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"nodemon\" \"cd ../client &&  npm start\"",
-    "prod": "NODE_ENV=production node"
+    "prod": "NODE_ENV=production node index.js"
   },
   "author": "",
   "license": "ISC",
