@@ -11,9 +11,13 @@ export const AuthRouter = () => {
       <Route path="/signup" element={<Signup />} />
       <Route
         path="/dashboard"
-        element={<PrivateRoute component={<Dashboard />} />}
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
       />
-      <Route path="/user/verify-email" element={<VerifyEmail />} />
+      {/* <Route path="/user/verify-email" element={<VerifyEmail />} /> */}
       <Route path="*" element={<Error />} />
     </Routes>
   );

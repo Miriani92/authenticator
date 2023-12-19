@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Signup.module.css";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FormInput, FormButton, Container } from "../components";
 import { handleSignupValidation } from "../utils/handleValidation";
-import axios from "axios";
+import { useAuthContext } from "../store/authContext";
 
 export const Signup = () => {
+  const { setUser, user } = useAuthContext();
   const [errorMessage, setErrorMessage] = useState("");
   const [submitButton, setSubmitButton] = useState({
     active: false,
@@ -36,9 +39,13 @@ export const Signup = () => {
         `http://localhost:4000/api/v1/auth/signup`,
         formData
       );
-      console.log("signup_response:", data);
+      console.log("user:", data.user);
 
       setFormData({ name: "", email: "", password: "" });
+
+      if (data?.user) {
+        setUser(data.user);
+      }
     } catch (error) {
       console.log("error", error);
       const message = error.response?.data?.message;
@@ -59,6 +66,13 @@ export const Signup = () => {
 
   return (
     <Container>
+      {user && (
+        <Navigate
+          to="/dashboard"
+          replace
+          state={{ from: window.location.pathname }}
+        />
+      )}
       <section className={styles.wrapper}>
         <h2 className={styles.title}>Signup</h2>
         <form className={styles.form_wrapper} onSubmit={handleSubmit}>
